@@ -1,7 +1,7 @@
 from django.views.generic import ListView
 from django.shortcuts import render
 
-from .models import Student
+from .models import Students
 
 
 def students_list(request):

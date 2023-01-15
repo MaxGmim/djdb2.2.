@@ -1,9 +1,10 @@
 from django.db import models
 
 
-class Teacher(models.Model):
+class Teachers(models.Model):
     name = models.CharField(max_length=30, verbose_name='Имя')
     subject = models.CharField(max_length=10, verbose_name='Предмет')
+
 
     class Meta:
         verbose_name = 'Учитель'
@@ -13,10 +14,12 @@ class Teacher(models.Model):
         return self.name
 
 
-class Student(models.Model):
+class Students(models.Model):
     name = models.CharField(max_length=30, verbose_name='Имя')
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    teacher = models.ManyToManyField(Teachers, related_name='students', on_delete=models.CASCADE)
     group = models.CharField(max_length=10, verbose_name='Класс')
+
+
 
     class Meta:
         verbose_name = 'Ученик'
